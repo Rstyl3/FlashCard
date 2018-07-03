@@ -1,10 +1,10 @@
 <template>
     <div class="flashcard-form">
       <label for="front">Front
-        <input type="text" id="front">
+        <input v-model="newFront" type="text" id="front">
       </label>
       <label for="back">Back
-        <input type="text" id="back">
+        <input v-model="newBack" type="text" id="back">
       </label>
       <button>Add a New Card</button>
       <span class="error">Oops! Flashcards need a front and a back.</span>
@@ -15,6 +15,12 @@
 export default {
   name: 'FlashCardForm',
   props: {
+  },
+  data(){
+    return{
+      newFront: "",
+      newBack:""
+    }
   }
 }
 </script>
