@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Flashcard App!</h1>
+    <FlashCardForm />
+    <FlashCardList />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FlashCardForm from './components/FlashCardForm.vue'
+import FlashCardList from './components/FlashCardList.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    FlashCardForm,
+    FlashCardList
   }
 }
 </script>
