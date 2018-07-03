@@ -1,23 +1,32 @@
 <template>
-  <div>
     <ul class="flashcard-list">
-      <li>
-        <p class="card">
+      <li v-for="card in cards" :key="card.id" @click="toggleCard(card)">
+        <p v-if="!card.flipped" class="card">{{card.front}}
             <span class="delete-card">X</span>
         </p>
-        <p class="card">
+        <p v-else class="card">{{card.back}}
             <span class="delete-card">X</span>
         </p>
       </li>
     </ul>
-  </div>
 
 </template>
 
 <script>
+import cards from "../data/app.js";
+
 export default {
   name: 'FlashCardList',
-  props: {
+  props: {},
+  data(){
+    return{
+      cards: cards
+    }
+  },
+  methods:{
+    toggleCard(card){
+      card.flipped = !card.flipped;
+    }
   }
 }
 </script>
@@ -34,11 +43,6 @@ li {
   list-style-type: none;
   padding: 10px 10px;
   transition: all 0.3s ease;
-}
-
-.container {
-  max-width: 100%;
-  padding: 2em;
 }
 
 .card {
@@ -115,6 +119,5 @@ li:nth-child(-7n+7) .card{
 .flip-enter, .flip-leave {
   transform: rotateY(180deg);
   opacity: 0;
-
 }
 </style>
