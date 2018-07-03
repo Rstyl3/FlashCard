@@ -4,9 +4,9 @@
         <input v-model="newFront" type="text" id="front">
       </label>
       <label for="back">Back
-        <input v-model="newBack" type="text" id="back">
+        <input @keypress.enter="addNew" v-model="newBack" type="text" id="back">
       </label>
-      <button>Add a New Card</button>
+      <button @click="addNew">Add a New Card</button>
       <span class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 </template>
@@ -14,12 +14,22 @@
 <script>
 export default {
   name: 'FlashCardForm',
-  props: {
-  },
+  props: ["value"],
   data(){
     return{
+      cards: this.value,
       newFront: "",
       newBack:""
+    }
+  },
+  methods:{
+    addNew() {
+       this.cards.push({
+         front: this.newFront,
+         back: this.newBack,
+         flipped: false
+       });
+       this.$emit("addCard", this.cards)
     }
   }
 }

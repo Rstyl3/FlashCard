@@ -1,20 +1,31 @@
 <template>
   <div id="app">
     <h1>Flashcard App!</h1>
-    <FlashCardForm />
-    <FlashCardList />
+    <FlashCardForm :value="cards" @addCard="handleAddCard"/>
+    <FlashCardList :value="cards" />
   </div>
 </template>
 
 <script>
 import FlashCardForm from './components/FlashCardForm.vue'
 import FlashCardList from './components/FlashCardList.vue'
+import cards from "./data/app.js";
 
 export default {
   name: 'app',
   components: {
     FlashCardForm,
     FlashCardList
+  },
+  data(){
+    return{
+      cards: cards
+    }
+  },
+  methods:{
+    handleAddCard(v){
+      this.cards = v
+    }
   }
 }
 </script>

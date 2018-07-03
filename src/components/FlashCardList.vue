@@ -13,14 +13,12 @@
 </template>
 
 <script>
-import cards from "../data/app.js";
-
 export default {
   name: 'FlashCardList',
-  props: {},
+  props: ["value"],
   data(){
     return{
-      cards: cards
+      cards: this.value,
     }
   },
   methods:{
