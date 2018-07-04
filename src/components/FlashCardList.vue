@@ -1,11 +1,11 @@
 <template>
     <ul class="flashcard-list">
-      <li v-for="card in cards" :key="card.id" @click="toggleCard(card)">
+      <li v-for="(card,index) in cards" :key="card.id" @click="toggleCard(card)">
         <p v-if="!card.flipped" class="card">{{card.front}}
-            <span class="delete-card">X</span>
+            <span @click="cards.splice(index,1)" class="delete-card">X</span>
         </p>
         <p v-else class="card">{{card.back}}
-            <span class="delete-card">X</span>
+            <span @click="cards.splice(index,1)" class="delete-card">X</span>
         </p>
       </li>
     </ul>
