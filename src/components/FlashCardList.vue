@@ -2,10 +2,8 @@
     <ul class="flashcard-list">
       <li v-for="(card,index) in cards" :key="card.id" @click="toggleCard(card)">
         <transition name="flip">
-          <p v-if="!card.flipped" key="front" class="card">{{card.front}}
-              <span @click="cards.splice(index,1)" class="delete-card">X</span>
-          </p>
-          <p v-else class="card" key="back">{{card.back}}
+          <p :key="card.flipped" class="card">
+            {{card.flipped ? card.back : card.front }}
               <span @click="cards.splice(index,1)" class="delete-card">X</span>
           </p>
         </transition>
